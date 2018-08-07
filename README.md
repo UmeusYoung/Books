@@ -4,8 +4,6 @@ description: 初次接触GitBook，遇到一些坑，看了很多资料，以下
 
 # Initial page
 
-
-
 ## [1. GitBook Editor](https://www.gitbook.com/editor) {#1-GitBook-Editor}
 
 最简单的方式就是使用GitBook编辑器，没有什么难度，后面的教程主要针对命令行的方式。
@@ -698,4 +696,10 @@ Gitbook默认带有5个插件：
 * [GitBook 中文解說 - 2.4](https://www.gitbook.com/book/wastemobile/gitbook-chinese/details)
 * [gitbook-documentation](https://www.gitbook.com/book/zhanghqgit/gitbook-documentation/details)
 * [gitbook-documentation](https://www.gitbook.com/book/chestnutme/gitbook-documentation/details)
+
+## 注意：
+
+1.第一次使用的时候要注意安装node、npm版本，否则的话，gitbook-cli安装不成功；
+
+2.安装gitbook-cli就不要安装gitbook，根据报错来处理错误；
 
