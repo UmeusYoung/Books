@@ -1,705 +1,444 @@
 ---
-description: 初次接触GitBook，遇到一些坑，看了很多资料，以下内容摘自网络，觉得最简单易懂，仅供参考！
+description: Linux指令在各种项目学习中都会遇到，一些常用的，总结一些，多多记住使用吧！
 ---
 
 # Initial page
 
-## [1. GitBook Editor](https://www.gitbook.com/editor) {#1-GitBook-Editor}
-
-最简单的方式就是使用GitBook编辑器，没有什么难度，后面的教程主要针对命令行的方式。
-
-[![](https://www.gitbook.com/assets/images/editor/preview_windows.png)](https://www.gitbook.com/assets/images/editor/preview_windows.png)
-
-PS：GitBook的book页面默认没有download按钮的
-
-[![GitBook](http://upload-images.jianshu.io/upload_images/3981391-8d0c8b6063488ef7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)](http://upload-images.jianshu.io/upload_images/3981391-8d0c8b6063488ef7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
-
-需要到设置中打开，打开后再次publish生效
-
-[![GitBook](http://upload-images.jianshu.io/upload_images/3981391-14e549f7801c794c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)](http://upload-images.jianshu.io/upload_images/3981391-14e549f7801c794c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
-
-### 1.1 同步GitHub {#1-1-同步GitHub}
-
-[![gitbook](http://upload-images.jianshu.io/upload_images/3981391-41675f06ba92da6c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)](http://upload-images.jianshu.io/upload_images/3981391-41675f06ba92da6c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
-
-### 1.2 更新失败，无法转换成pdf/mobi/epub格式 {#1-2-更新失败，无法转换成pdf-mobi-epub格式}
-
-[![gitbook](http://upload-images.jianshu.io/upload_images/3981391-e895f74985d2b8b9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)](http://upload-images.jianshu.io/upload_images/3981391-e895f74985d2b8b9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
-
-[![gitbook](http://upload-images.jianshu.io/upload_images/3981391-7472f7955ba3bb2a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)](http://upload-images.jianshu.io/upload_images/3981391-7472f7955ba3bb2a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
-
-### 1.3 Token {#1-3-Token}
+ **系统信息** 
 
 ```bash
-git config --global gitbook.user usernamegit config --global gitbook.token yourtoken
+arch 显示机器的处理器架构(1) 
+uname -m 显示机器的处理器架构(2) 
+uname -r 显示正在使用的内核版本 
+dmidecode -q 显示硬件系统部件 - (SMBIOS / DMI) 
+hdparm -i /dev/hda 罗列一个磁盘的架构特性 
+hdparm -tT /dev/sda 在磁盘上执行测试性读取操作 
+cat /proc/cpuinfo 显示CPU info的信息 
+cat /proc/interrupts 显示中断 
+cat /proc/meminfo 校验内存使用 
+cat /proc/swaps 显示哪些swap被使用 
+cat /proc/version 显示内核的版本 
+cat /proc/net/dev 显示网络适配器及统计 
+cat /proc/mounts 显示已加载的文件系统 
+lspci -tv 罗列 PCI 设备 
+lsusb -tv 显示 USB 设备 
+date 显示系统日期 
+cal 2007 显示2007年的日历表 
+date 041217002007.00 设置日期和时间 - 月日时分年.秒 
+clock -w 将时间修改保存到 BIOS 
 ```
 
-[![token](http://upload-images.jianshu.io/upload_images/3981391-5cbfae01a0d89658.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)](http://upload-images.jianshu.io/upload_images/3981391-5cbfae01a0d89658.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
-
-## 2. 安装 nodejs {#2-安装-nodejs}
-
-首先我们需要做的是安装 [Nodejs](http://nodejs.cn/)。大家可以到 [Nodejs](http://nodejs.cn/) 的官网进行下载。下载完成后，执行双击进行运行安装。安装完成后，打开 cmd 命令行，输入 node -v 查看安装的 nodejs 的相关版本信息。
-
-也可以在安装目录中找到 node.exe 文件，打开输入 node -v 查看安装的 nodejs 的相关版本信息。
-
-## 3. nodejs 镜像配置 {#3-nodejs-镜像配置}
-
-nodejs 安装完成后，我们就可以开始安装 gitbook 了。但是在安装之前，我们还需要配置一下 nodejs 插件安装的下载镜像地址。因为默认的镜像地址是在国外，需要翻墙才可以访问，因此我们需要设置国内的镜像地址。国内的我推荐大家使用阿里巴巴的镜像地址 [http://registry.npm.taobao.org](http://registry.npm.taobao.org/) 。执行下面的命令，进行配置。
+ **关机 \(系统的关机、重启以及登出 \)** 
 
 ```bash
-npm config set registry http://registry.npm.taobao.org
+shutdown -h now 关闭系统(1) 
+init 0 关闭系统(2) 
+telinit 0 关闭系统(3) 
+shutdown -h hours:minutes & 按预定时间关闭系统 
+shutdown -c 取消按预定时间关闭系统 
+shutdown -r now 重启(1) 
+reboot 重启(2) 
+logout 注销 
 ```
 
-除了上面的方法外，我们也可以在用户主目录下编辑 .npmrc 文件，添加一行 registry=[http://registry.npm.taobao.org](http://registry.npm.taobao.org/) 保存就可以了。用户的主目录一般在 C:\Users\Administrator ，具体随你的操作系统系统盘而定。
-
-## 4. 全局安装 gitbook {#4-全局安装-gitbook}
-
-现在我们可以开始安装全局的 gitbook 了。执行 npm install gitbook-cli -g 命令，进行安装。安装的过程中，由于需要下载安装包，因此大家需要等待一定的时间，具体时长取决于你的网速和硬件配置。
-
-安装完成后，我们可以执行 gitbook -v 查看安装的版本信息。
-
-## 5. gitbook 常用的命令 {#5-gitbook-常用的命令}
-
-安装完成了后，我们就可以开始编写内容，进行电子书发布了。具体的操作，大家可以参考《[GitBook简明教程](http://www.chengweiyang.cn/gitbook/installation/README.html)》进行学习。我这里给大家推荐3种最常用的命令
+ **文件和目录** 
 
 ```bash
-gitbook init //初始化目录文件
-gitbook help //列出gitbook所有的命令
-gitbook --help //输出gitbook-cli的帮助信息
-gitbook build //生成静态网页
-gitbook serve //生成静态网页并运行服务器
-gitbook build --gitbook=2.0.1 //生成时指定gitbook的版本, 本地没有会先下载
-gitbook ls //列出本地所有的gitbook版本
-gitbook ls-remote //列出远程可用的gitbook版本
-gitbook fetch 标签/版本号 //安装对应的gitbook版本
-gitbook update //更新到gitbook的最新版本
-gitbook uninstall 2.0.1 //卸载对应的gitbook版本
-gitbook build --log=debug //指定log的级别
-gitbook builid --debug //输出错误信息
+cd /home 进入 '/ home' 目录' 
+cd .. 返回上一级目录 
+cd ../.. 返回上两级目录 
+cd 进入个人的主目录 
+cd ~user1 进入个人的主目录 
+cd - 返回上次所在的目录 
+pwd 显示工作路径 
+ls 查看目录中的文件 
+ls -F 查看目录中的文件 
+ls -l 显示文件和目录的详细资料 
+ls -a 显示隐藏文件 
+ls *[0-9]* 显示包含数字的文件名和目录名 
+tree 显示文件和目录由根目录开始的树形结构(1) 
+lstree 显示文件和目录由根目录开始的树形结构(2) 
+mkdir dir1 创建一个叫做 'dir1' 的目录' 
+mkdir dir1 dir2 同时创建两个目录 
+mkdir -p /tmp/dir1/dir2 创建一个目录树 
+rm -f file1 删除一个叫做 'file1' 的文件' 
+rmdir dir1 删除一个叫做 'dir1' 的目录' 
+rm -rf dir1 删除一个叫做 'dir1' 的目录并同时删除其内容 
+rm -rf dir1 dir2 同时删除两个目录及它们的内容 
+mv dir1 new_dir 重命名/移动 一个目录 
+cp file1 file2 复制一个文件 
+cp dir/* . 复制一个目录下的所有文件到当前工作目录 
+cp -a /tmp/dir1 . 复制一个目录到当前工作目录 
+cp -a dir1 dir2 复制一个目录 
+ln -s file1 lnk1 创建一个指向文件或目录的软链接 
+ln file1 lnk1 创建一个指向文件或目录的物理链接 
+touch -t 0712250000 file1 修改一个文件或目录的时间戳 - (YYMMDDhhmm) 
+file file1 outputs the mime type of the file as text 
+iconv -l 列出已知的编码 
+iconv -f fromEncoding -t toEncoding inputFile > outputFile creates a new from the given input file by assuming it is encoded in fromEncoding and converting it to toEncoding. 
+find . -maxdepth 1 -name *.jpg -print -exec convert "{}" -resize 80x60 "thumbs/{}" \; batch resize files in the current directory and send them to a thumbnails directory (requires convert from Imagemagick) 
 ```
 
-### gitbook {#gitbook}
+ **文件搜索** 
 
 ```bash
-C:\Users\AllenIverson\Desktop\gitcourse>gitbook
- Usage: gitbook [options] [command]
- Commands:
-   ls                        List versions installed locally
-   current                   Display currently activated version
-   ls-remote                 List remote versions available for install
-   fetch [version]           Download and install a <version>
-   alias [folder] [version]  Set an alias named <version> pointing to <folder>
-   uninstall [version]       Uninstall a version
-   update [tag]              Update to the latest version of GitBook
-   help                      List commands for GitBook
-   *                         run a command with a specific gitbook version
- Options:
-   -h, --help               output usage information
-   -v, --gitbook [version]  specify GitBook version to use
-   -d, --debug              enable verbose error
-   -V, --version            Display running versions of gitbook and gitbook-cli
+find / -name file1 从 '/' 开始进入根文件系统搜索文件和目录 
+find / -user user1 搜索属于用户 'user1' 的文件和目录 
+find /home/user1 -name \*.bin 在目录 '/ home/user1' 中搜索带有'.bin' 结尾的文件 
+find /usr/bin -type f -atime +100 搜索在过去100天内未被使用过的执行文件 
+find /usr/bin -type f -mtime -10 搜索在10天内被创建或者修改过的文件 
+find / -name \*.rpm -exec chmod 755 '{}' \; 搜索以 '.rpm' 结尾的文件并定义其权限 
+find / -xdev -name \*.rpm 搜索以 '.rpm' 结尾的文件，忽略光驱、捷盘等可移动设备 
+locate \*.ps 寻找以 '.ps' 结尾的文件 - 先运行 'updatedb' 命令 
+whereis halt 显示一个二进制文件、源码或man的位置 
+which halt 显示一个二进制文件或可执行文件的完整路径 
 ```
 
-### gitbook serve {#gitbook-serve}
+ **挂载一个文件系统**
 
 ```bash
-C:\Users\AllenIverson\Desktop\gitbook-test>gitbook serve
-Live reload server started on port: 35729
-Press CTRL+C to quit ...
-info: 7 plugins are installed
-info: loading plugin "livereload"... OK
-info: loading plugin "highlight"... OK
-info: loading plugin "search"... OK
-info: loading plugin "lunr"... OK
-info: loading plugin "sharing"... OK
-info: loading plugin "fontsettings"... OK
-info: loading plugin "theme-default"... OK
-info: found 3 pages
-info: found 0 asset files
-info: >> generation finished with success in 1.9s !
-Starting server ...
-Serving book on http://localhost:4000
+mount /dev/hda2 /mnt/hda2 挂载一个叫做hda2的盘 - 确定目录 '/ mnt/hda2' 已经存在 
+umount /dev/hda2 卸载一个叫做hda2的盘 - 先从挂载点 '/ mnt/hda2' 退出 
+fuser -km /mnt/hda2 当设备繁忙时强制卸载 
+umount -n /mnt/hda2 运行卸载操作而不写入 /etc/mtab 文件- 当文件为只读或当磁盘写满时非常有用 
+mount /dev/fd0 /mnt/floppy 挂载一个软盘 
+mount /dev/cdrom /mnt/cdrom 挂载一个cdrom或dvdrom 
+mount /dev/hdc /mnt/cdrecorder 挂载一个cdrw或dvdrom 
+mount /dev/hdb /mnt/cdrecorder 挂载一个cdrw或dvdrom 
+mount -o loop file.iso /mnt/cdrom 挂载一个文件或ISO镜像文件 
+mount -t vfat /dev/hda5 /mnt/hda5 挂载一个Windows FAT32文件系统 
+mount /dev/sda1 /mnt/usbdisk 挂载一个usb 捷盘或闪存设备 
+mount -t smbfs -o username=user,password=pass //WinClient/share /mnt/share 挂载一个windows网络共享 
 ```
 
-### gitbook ls {#gitbook-ls}
+ **磁盘空间** 
 
 ```bash
-C:\Users\AllenIverson\Desktop\gitcourse>gitbook ls
-GitBook Versions Installed:
-    * 3.2.2
-Run "gitbook update" to update to the latest version.
+df -h 显示已经挂载的分区列表 
+ls -lSr |more 以尺寸大小排列文件和目录 
+du -sh dir1 估算目录 'dir1' 已经使用的磁盘空间' 
+du -sk * | sort -rn 以容量大小为依据依次显示文件和目录的大小 
+rpm -q -a --qf '%10{SIZE}t%{NAME}n' | sort -k1,1n 以大小为依据依次显示已安装的rpm包所使用的空间 (fedora, redhat类系统) 
+dpkg-query -W -f='${Installed-Size;10}t${Package}n' | sort -k1,1n 以大小为依据显示已安装的deb包所使用的空间 (ubuntu, debian类系统) 
 ```
 
-### gitbook ls-remote {#gitbook-ls-remote}
+ **用户和群组** 
+
+```bash
+groupadd group_name 创建一个新用户组 
+groupdel group_name 删除一个用户组 
+groupmod -n new_group_name old_group_name 重命名一个用户组 
+useradd -c "Name Surname " -g admin -d /home/user1 -s /bin/bash user1 创建一个属于 "admin" 用户组的用户 
+useradd user1 创建一个新用户 
+userdel -r user1 删除一个用户 ( '-r' 排除主目录) 
+usermod -c "User FTP" -g system -d /ftp/user1 -s /bin/nologin user1 修改用户属性 
+passwd 修改口令 
+passwd user1 修改一个用户的口令 (只允许root执行) 
+chage -E 2005-12-31 user1 设置用户口令的失效期限 
+pwck 检查 '/etc/passwd' 的文件格式和语法修正以及存在的用户 
+grpck 检查 '/etc/passwd' 的文件格式和语法修正以及存在的群组 
+newgrp group_name 登陆进一个新的群组以改变新创建文件的预设群组 
+```
+
+ **文件的权限 - 使用 "+" 设置权限，使用 "-" 用于取消** 
+
+```bash
+ls -lh 显示权限 
+ls /tmp | pr -T5 -W$COLUMNS 将终端划分成5栏显示 
+chmod ugo+rwx directory1 设置目录的所有人(u)、群组(g)以及其他人(o)以读（r ）、写(w)和执行(x)的权限 
+chmod go-rwx directory1 删除群组(g)与其他人(o)对目录的读写执行权限 
+chown user1 file1 改变一个文件的所有人属性 
+chown -R user1 directory1 改变一个目录的所有人属性并同时改变改目录下所有文件的属性 
+chgrp group1 file1 改变文件的群组 
+chown user1:group1 file1 改变一个文件的所有人和群组属性 
+find / -perm -u+s 罗列一个系统中所有使用了SUID控制的文件 
+chmod u+s /bin/file1 设置一个二进制文件的 SUID 位 - 运行该文件的用户也被赋予和所有者同样的权限 
+chmod u-s /bin/file1 禁用一个二进制文件的 SUID位 
+chmod g+s /home/public 设置一个目录的SGID 位 - 类似SUID ，不过这是针对目录的 
+chmod g-s /home/public 禁用一个目录的 SGID 位 
+chmod o+t /home/public 设置一个文件的 STIKY 位 - 只允许合法所有人删除文件 
+chmod o-t /home/public 禁用一个目录的 STIKY 位 
+```
+
+ **文件的特殊属性 - 使用 "+" 设置权限，使用 "-" 用于取消** 
+
+```bash
+chattr +a file1 只允许以追加方式读写文件 
+chattr +c file1 允许这个文件能被内核自动压缩/解压 
+chattr +d file1 在进行文件系统备份时，dump程序将忽略这个文件 
+chattr +i file1 设置成不可变的文件，不能被删除、修改、重命名或者链接 
+chattr +s file1 允许一个文件被安全地删除 
+chattr +S file1 一旦应用程序对这个文件执行了写操作，使系统立刻把修改的结果写到磁盘 
+chattr +u file1 若文件被删除，系统会允许你在以后恢复这个被删除的文件 
+lsattr 显示特殊的属性
+```
+
+ **打包和压缩文件** 
+
+```bash
+bunzip2 file1.bz2 解压一个叫做 'file1.bz2'的文件 
+bzip2 file1 压缩一个叫做 'file1' 的文件 
+gunzip file1.gz 解压一个叫做 'file1.gz'的文件 
+gzip file1 压缩一个叫做 'file1'的文件 
+gzip -9 file1 最大程度压缩 
+rar a file1.rar test_file 创建一个叫做 'file1.rar' 的包 
+rar a file1.rar file1 file2 dir1 同时压缩 'file1', 'file2' 以及目录 'dir1' 
+rar x file1.rar 解压rar包 
+unrar x file1.rar 解压rar包 
+tar -cvf archive.tar file1 创建一个非压缩的 tarball 
+tar -cvf archive.tar file1 file2 dir1 创建一个包含了 'file1', 'file2' 以及 'dir1'的档案文件 
+tar -tf archive.tar 显示一个包中的内容 
+tar -xvf archive.tar 释放一个包 
+tar -xvf archive.tar -C /tmp 将压缩包释放到 /tmp目录下 
+tar -cvfj archive.tar.bz2 dir1 创建一个bzip2格式的压缩包 
+tar -xvfj archive.tar.bz2 解压一个bzip2格式的压缩包 
+tar -cvfz archive.tar.gz dir1 创建一个gzip格式的压缩包 
+tar -xvfz archive.tar.gz 解压一个gzip格式的压缩包 
+zip file1.zip file1 创建一个zip格式的压缩包 
+zip -r file1.zip file1 file2 dir1 将几个文件和目录同时压缩成一个zip格式的压缩包 
+unzip file1.zip 解压一个zip格式压缩包 
+```
+
+ **RPM 包 - （Fedora, Redhat及类似系统）** 
+
+```bash
+rpm -ivh package.rpm 安装一个rpm包 
+rpm -ivh --nodeeps package.rpm 安装一个rpm包而忽略依赖关系警告 
+rpm -U package.rpm 更新一个rpm包但不改变其配置文件 
+rpm -F package.rpm 更新一个确定已经安装的rpm包 
+rpm -e package_name.rpm 删除一个rpm包 
+rpm -qa 显示系统中所有已经安装的rpm包 
+rpm -qa | grep httpd 显示所有名称中包含 "httpd" 字样的rpm包 
+rpm -qi package_name 获取一个已安装包的特殊信息 
+rpm -qg "System Environment/Daemons" 显示一个组件的rpm包 
+rpm -ql package_name 显示一个已经安装的rpm包提供的文件列表 
+rpm -qc package_name 显示一个已经安装的rpm包提供的配置文件列表 
+rpm -q package_name --whatrequires 显示与一个rpm包存在依赖关系的列表 
+rpm -q package_name --whatprovides 显示一个rpm包所占的体积 
+rpm -q package_name --scripts 显示在安装/删除期间所执行的脚本l 
+rpm -q package_name --changelog 显示一个rpm包的修改历史 
+rpm -qf /etc/httpd/conf/httpd.conf 确认所给的文件由哪个rpm包所提供 
+rpm -qp package.rpm -l 显示由一个尚未安装的rpm包提供的文件列表 
+rpm --import /media/cdrom/RPM-GPG-KEY 导入公钥数字证书 
+rpm --checksig package.rpm 确认一个rpm包的完整性 
+rpm -qa gpg-pubkey 确认已安装的所有rpm包的完整性 
+rpm -V package_name 检查文件尺寸、 许可、类型、所有者、群组、MD5检查以及最后修改时间 
+rpm -Va 检查系统中所有已安装的rpm包- 小心使用 
+rpm -Vp package.rpm 确认一个rpm包还未安装 
+rpm2cpio package.rpm | cpio --extract --make-directories *bin* 从一个rpm包运行可执行文件 
+rpm -ivh /usr/src/redhat/RPMS/`arch`/package.rpm 从一个rpm源码安装一个构建好的包 
+rpmbuild --rebuild package_name.src.rpm 从一个rpm源码构建一个 rpm 包 
+```
+
+ **YUM 软件包升级器 - （Fedora, RedHat及类似系统）**
+
+```bash
+yum install package_name 下载并安装一个rpm包 
+yum localinstall package_name.rpm 将安装一个rpm包，使用你自己的软件仓库为你解决所有依赖关系 
+yum update package_name.rpm 更新当前系统中所有安装的rpm包 
+yum update package_name 更新一个rpm包 
+yum remove package_name 删除一个rpm包 
+yum list 列出当前系统中安装的所有包 
+yum search package_name 在rpm仓库中搜寻软件包 
+yum clean packages 清理rpm缓存删除下载的包 
+yum clean headers 删除所有头文件 
+yum clean all 删除所有缓存的包和头文件 
+```
+
+ **DEB 包 \(Debian, Ubuntu 以及类似系统\)**
+
+```bash
+dpkg -i package.deb 安装/更新一个 deb 包 
+dpkg -r package_name 从系统删除一个 deb 包 
+dpkg -l 显示系统中所有已经安装的 deb 包 
+dpkg -l | grep httpd 显示所有名称中包含 "httpd" 字样的deb包 
+dpkg -s package_name 获得已经安装在系统中一个特殊包的信息 
+dpkg -L package_name 显示系统中已经安装的一个deb包所提供的文件列表 
+dpkg --contents package.deb 显示尚未安装的一个包所提供的文件列表 
+dpkg -S /bin/ping 确认所给的文件由哪个deb包提供 
+```
+
+ **APT 软件工具 \(Debian, Ubuntu 以及类似系统\)** 
+
+```bash
+apt-get install package_name 安装/更新一个 deb 包 
+apt-cdrom install package_name 从光盘安装/更新一个 deb 包 
+apt-get update 升级列表中的软件包 
+apt-get upgrade 升级所有已安装的软件 
+apt-get remove package_name 从系统删除一个deb包 
+apt-get check 确认依赖的软件仓库正确 
+apt-get clean 从下载的软件包中清理缓存 
+apt-cache search searched-package 返回包含所要搜索字符串的软件包名称 
+```
+
+ **查看文件内容** 
+
+```bash
+cat file1 从第一个字节开始正向查看文件的内容 
+tac file1 从最后一行开始反向查看一个文件的内容 
+more file1 查看一个长文件的内容 
+less file1 类似于 'more' 命令，但是它允许在文件中和正向操作一样的反向操作 
+head -2 file1 查看一个文件的前两行 
+tail -2 file1 查看一个文件的最后两行 
+tail -f /var/log/messages 实时查看被添加到一个文件中的内容 
+```
+
+ **文本处理**
+
+```bash
+cat file1 file2 ... | command <> file1_in.txt_or_file1_out.txt general syntax for text manipulation using PIPE, STDIN and STDOUT 
+cat file1 | command( sed, grep, awk, grep, etc...) > result.txt 合并一个文件的详细说明文本，并将简介写入一个新文件中 
+cat file1 | command( sed, grep, awk, grep, etc...) >> result.txt 合并一个文件的详细说明文本，并将简介写入一个已有的文件中 
+grep Aug /var/log/messages 在文件 '/var/log/messages'中查找关键词"Aug" 
+grep ^Aug /var/log/messages 在文件 '/var/log/messages'中查找以"Aug"开始的词汇 
+grep [0-9] /var/log/messages 选择 '/var/log/messages' 文件中所有包含数字的行 
+grep Aug -R /var/log/* 在目录 '/var/log' 及随后的目录中搜索字符串"Aug" 
+sed 's/stringa1/stringa2/g' example.txt 将example.txt文件中的 "string1" 替换成 "string2" 
+sed '/^$/d' example.txt 从example.txt文件中删除所有空白行 
+sed '/ *#/d; /^$/d' example.txt 从example.txt文件中删除所有注释和空白行 
+echo 'esempio' | tr '[:lower:]' '[:upper:]' 合并上下单元格内容 
+sed -e '1d' result.txt 从文件example.txt 中排除第一行 
+sed -n '/stringa1/p' 查看只包含词汇 "string1"的行 
+sed -e 's/ *$//' example.txt 删除每一行最后的空白字符 
+sed -e 's/stringa1//g' example.txt 从文档中只删除词汇 "string1" 并保留剩余全部 
+sed -n '1,5p;5q' example.txt 查看从第一行到第5行内容 
+sed -n '5p;5q' example.txt 查看第5行 
+sed -e 's/00*/0/g' example.txt 用单个零替换多个零 
+cat -n file1 标示文件的行数 
+cat example.txt | awk 'NR%2==1' 删除example.txt文件中的所有偶数行 
+echo a b c | awk '{print $1}' 查看一行第一栏 
+echo a b c | awk '{print $1,$3}' 查看一行的第一和第三栏 
+paste file1 file2 合并两个文件或两栏的内容 
+paste -d '+' file1 file2 合并两个文件或两栏的内容，中间用"+"区分 
+sort file1 file2 排序两个文件的内容 
+sort file1 file2 | uniq 取出两个文件的并集(重复的行只保留一份) 
+sort file1 file2 | uniq -u 删除交集，留下其他的行 
+sort file1 file2 | uniq -d 取出两个文件的交集(只留下同时存在于两个文件中的文件) 
+comm -1 file1 file2 比较两个文件的内容只删除 'file1' 所包含的内容 
+comm -2 file1 file2 比较两个文件的内容只删除 'file2' 所包含的内容 
+comm -3 file1 file2 比较两个文件的内容只删除两个文件共有的部分 
+```
+
+ **字符设置和文件格式转换** 
+
+```bash
+dos2unix filedos.txt fileunix.txt 将一个文本文件的格式从MSDOS转换成UNIX 
+unix2dos fileunix.txt filedos.txt 将一个文本文件的格式从UNIX转换成MSDOS 
+recode ..HTML < page.txt > page.html 将一个文本文件转换成html 
+recode -l | more 显示所有允许的转换格式 
+```
+
+ **文件系统分析** 
+
+```bash
+badblocks -v /dev/hda1 检查磁盘hda1上的坏磁块 
+fsck /dev/hda1 修复/检查hda1磁盘上linux文件系统的完整性 
+fsck.ext2 /dev/hda1 修复/检查hda1磁盘上ext2文件系统的完整性 
+e2fsck /dev/hda1 修复/检查hda1磁盘上ext2文件系统的完整性 
+e2fsck -j /dev/hda1 修复/检查hda1磁盘上ext3文件系统的完整性 
+fsck.ext3 /dev/hda1 修复/检查hda1磁盘上ext3文件系统的完整性 
+fsck.vfat /dev/hda1 修复/检查hda1磁盘上fat文件系统的完整性 
+fsck.msdos /dev/hda1 修复/检查hda1磁盘上dos文件系统的完整性 
+dosfsck /dev/hda1 修复/检查hda1磁盘上dos文件系统的完整性 
+```
+
+ **初始化一个文件系统**
+
+```bash
+mkfs /dev/hda1 在hda1分区创建一个文件系统 
+mke2fs /dev/hda1 在hda1分区创建一个linux ext2的文件系统 
+mke2fs -j /dev/hda1 在hda1分区创建一个linux ext3(日志型)的文件系统 
+mkfs -t vfat 32 -F /dev/hda1 创建一个 FAT32 文件系统 
+fdformat -n /dev/fd0 格式化一个软盘 
+mkswap /dev/hda3 创建一个swap文件系统 
+
+```
+
+ **SWAP文件系统** 
+
+```bash
+mkswap /dev/hda3 创建一个swap文件系统 
+swapon /dev/hda3 启用一个新的swap文件系统 
+swapon /dev/hda2 /dev/hdb3 启用两个swap分区 
+```
+
+ **备份** 
+
+```bash
+dump -0aj -f /tmp/home0.bak /home 制作一个 '/home' 目录的完整备份 
+dump -1aj -f /tmp/home0.bak /home 制作一个 '/home' 目录的交互式备份 
+restore -if /tmp/home0.bak 还原一个交互式备份 
+rsync -rogpav --delete /home /tmp 同步两边的目录 
+rsync -rogpav -e ssh --delete /home ip_address:/tmp 通过SSH通道rsync 
+rsync -az -e ssh --delete ip_addr:/home/public /home/local 通过ssh和压缩将一个远程目录同步到本地目录 
+rsync -az -e ssh --delete /home/local ip_addr:/home/public 通过ssh和压缩将本地目录同步到远程目录 
+dd bs=1M if=/dev/hda | gzip | ssh user@ip_addr 'dd of=hda.gz' 通过ssh在远程主机上执行一次备份本地磁盘的操作 
+dd if=/dev/sda of=/tmp/file1 备份磁盘内容到一个文件 
+tar -Puf backup.tar /home/user 执行一次对 '/home/user' 目录的交互式备份操作 
+( cd /tmp/local/ && tar c . ) | ssh -C user@ip_addr 'cd /home/share/ && tar x -p' 通过ssh在远程目录中复制一个目录内容 
+( tar c /home ) | ssh -C user@ip_addr 'cd /home/backup-home && tar x -p' 通过ssh在远程目录中复制一个本地目录 
+tar cf - . | (cd /tmp/backup ; tar xf - ) 本地将一个目录复制到另一个地方，保留原有权限及链接 
+find /home/user1 -name '*.txt' | xargs cp -av --target-directory=/home/backup/ --parents 从一个目录查找并复制所有以 '.txt' 结尾的文件到另一个目录 
+find /var/log -name '*.log' | tar cv --files-from=- | bzip2 > log.tar.bz2 查找所有以 '.log' 结尾的文件并做成一个bzip包 
+dd if=/dev/hda of=/dev/fd0 bs=512 count=1 做一个将 MBR (Master Boot Record)内容复制到软盘的动作 
+dd if=/dev/fd0 of=/dev/hda bs=512 count=1 从已经保存到软盘的备份中恢复MBR内容 
+```
+
+ **光盘**
+
+```bash
+cdrecord -v gracetime=2 dev=/dev/cdrom -eject blank=fast -force 清空一个可复写的光盘内容 
+mkisofs /dev/cdrom > cd.iso 在磁盘上创建一个光盘的iso镜像文件 
+mkisofs /dev/cdrom | gzip > cd_iso.gz 在磁盘上创建一个压缩了的光盘iso镜像文件 
+mkisofs -J -allow-leading-dots -R -V "Label CD" -iso-level 4 -o ./cd.iso data_cd 创建一个目录的iso镜像文件 
+cdrecord -v dev=/dev/cdrom cd.iso 刻录一个ISO镜像文件 
+gzip -dc cd_iso.gz | cdrecord dev=/dev/cdrom - 刻录一个压缩了的ISO镜像文件 
+mount -o loop cd.iso /mnt/iso 挂载一个ISO镜像文件 
+cd-paranoia -B 从一个CD光盘转录音轨到 wav 文件中 
+cd-paranoia -- "-3" 从一个CD光盘转录音轨到 wav 文件中（参数-3） 
+cdrecord --scanbus 扫描总线以识别scsi通道 
+dd if=/dev/hdc | md5sum 校验一个设备的md5sum编码，例如一张 CD 
+```
+
+ **网络 - （以太网和WIFI无线**）
 
 ```text
-C:\Users\AllenIverson\Desktop\gitcourse>gitbook ls-remote
-Available GitBook Versions:
-     4.0.0-alpha.5, 4.0.0-alpha.4, 4.0.0-alpha.3, 4.0.0-alpha.2, 4.0.0-alpha.1, 3.2.2, 3.2.1, 3.2.0, 3.2.0-pre.1, 3.2.0-
-pre.0, 3.1.1, 3.1.0, 3.0.3, 3.0.2, 3.0.1, 3.0.0, 3.0.0-pre.15, 3.0.0-pre.14, 3.0.0-pre.13, 3.0.0-pre.12, 3.0.0-pre.11, 3
-.0.0-pre.10, 3.0.0-pre.9, 3.0.0-pre.8, 3.0.0-pre.7, 3.0.0-pre.6, 3.0.0-pre.5, 3.0.0-pre.4, 3.0.0-pre.3, 3.0.0-pre.2, 3.0
-.0-pre.1, 2.6.7, 2.6.6, 2.6.5, 2.6.4, 2.6.3, 2.6.2, 2.6.1, 2.6.0, 2.5.2, 2.5.1, 2.5.0, 2.5.0-beta.7, 2.5.0-beta.6, 2.5.0
--beta.5, 2.5.0-beta.4, 2.5.0-beta.3, 2.5.0-beta.2, 2.5.0-beta.1, 2.4.3, 2.4.2, 2.4.1, 2.4.0, 2.3.3, 2.3.2, 2.3.1, 2.3.0,
- 2.2.0, 2.1.0, 2.0.4, 2.0.3, 2.0.2, 2.0.1, 2.0.0, 2.0.0-beta.5, 2.0.0-beta.4, 2.0.0-beta.3, 2.0.0-beta.2, 2.0.0-beta.1,
-2.0.0-alpha.9, 2.0.0-alpha.8, 2.0.0-alpha.7, 2.0.0-alpha.6, 2.0.0-alpha.5, 2.0.0-alpha.4, 2.0.0-alpha.3, 2.0.0-alpha.2,
-2.0.0-alpha.1
-Tags:
-     latest : 3.2.2
-     pre : 4.0.0-alpha.5
+ifconfig eth0 显示一个以太网卡的配置 
+ifup eth0 启用一个 'eth0' 网络设备 
+ifdown eth0 禁用一个 'eth0' 网络设备 
+ifconfig eth0 192.168.1.1 netmask 255.255.255.0 控制IP地址 
+ifconfig eth0 promisc 设置 'eth0' 成混杂模式以嗅探数据包 (sniffing) 
+dhclient eth0 以dhcp模式启用 'eth0' 
+route -n show routing table 
+route add -net 0/0 gw IP_Gateway configura default gateway 
+route add -net 192.168.0.0 netmask 255.255.0.0 gw 192.168.1.1 configure static route to reach network '192.168.0.0/16' 
+route del 0/0 gw IP_gateway remove static route 
+echo "1" > /proc/sys/net/ipv4/ip_forward activate ip routing 
+hostname show hostname of system 
+host www.example.com lookup hostname to resolve name to ip address and viceversa(1) 
+nslookup www.example.com lookup hostname to resolve name to ip address and viceversa(2) 
+ip link show show link status of all interfaces 
+mii-tool eth0 show link status of 'eth0' 
+ethtool eth0 show statistics of network card 'eth0' 
+netstat -tup show all active network connections and their PID 
+netstat -tupl show all network services listening on the system and their PID 
+tcpdump tcp port 80 show all HTTP traffic 
+iwlist scan show wireless networks 
+iwconfig eth1 show configuration of a wireless network card 
+hostname show hostname 
+host www.example.com lookup hostname to resolve name to ip address and viceversa 
+nslookup www.example.com lookup hostname to resolve name to ip address and viceversa 
+whois www.example.com lookup on Whois database
 ```
 
-### gitbook -V {#gitbook-V}
-
-```bash
-C:\Users\AllenIverson\Desktop\gitcourse>gitbook -V
-CLI version: 2.3.0
-GitBook version: 3.2.2
-```
-
-### gitbook pdf {#gitbook-pdf}
-
-[![gitbook pdf](http://upload-images.jianshu.io/upload_images/3981391-7d5e93fba468f90b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)](http://upload-images.jianshu.io/upload_images/3981391-7d5e93fba468f90b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+ GO TOP INDEX ^ 
 
 ```text
-C:\Users\AllenIverson\Desktop\gitcourse>gitbook pdf
-info: 7 plugins are installed
-info: 6 explicitly listed
-info: loading plugin "highlight"... OK
-info: loading plugin "search"... OK
-info: loading plugin "lunr"... OK
-info: loading plugin "sharing"... OK
-info: loading plugin "fontsettings"... OK
-info: loading plugin "theme-default"... OK
-info: found 3 pages
-info: found 0 asset files
-EbookError: Error during ebook generation: 'ebook-convert' is not recognized as an internal or external command,
-operable program or batch file.
+Microsoft Windows networks (SAMBA) 
+nbtscan ip_addr netbios name resolution 
+nmblookup -A ip_addr netbios name resolution 
+smbclient -L ip_addr/hostname show remote shares of a windows host 
+smbget -Rr smb://ip_addr/share like wget can download files from a host windows via smb 
+mount -t smbfs -o username=user,password=pass //WinClient/share /mnt/share mount a windows network share
 ```
-
-错误提示：ebook-convert不是内部或外部命令，原因是GitBook在生成PDF的过程中使用到calibre的转换功能，没有安装calibre或安装了calibre没有配置环境变量都会导致转换PDF失败  
-
-
-```bash
-C:\Users\AllenIverson\Desktop\gitcourse>gitbook pdf
-info: 7 plugins are installed
-info: 6 explicitly listed
-info: loading plugin "highlight"... OK
-info: loading plugin "search"... OK
-info: loading plugin "lunr"... OK
-info: loading plugin "sharing"... OK
-info: loading plugin "fontsettings"... OK
-info: loading plugin "theme-default"... OK
-info: found 3 pages
-info: found 2 asset files
-info: >> generation finished with success in 8.6s !
-info: >> 1 file(s) generated
-```
-
-安装calibre后，转换成功。PS：安装calibre后需要重新启动命令行窗口
-
-### 设置PDF输出格式 {#设置PDF输出格式}
-
-book.json  
-
-
-```javascript
-{
-  "gitbook": "2.x.x",
-  "title": "Go语言圣经",
-  "description": "<The Go Programming Language>中文版",
-  "language": "zh",
-  "structure": {
-    "readme": "preface.md"
-  },
-  "pluginsConfig": {
-    "fontSettings": {
-      "theme": "white",
-      "family": "msyh",
-      "size": 2
-    },
-    "plugins": [
-      "yahei",
-      "katex",
-      "-search"
-    ]
-  },
-  "fontState": {
-    "size": "2",
-    "family": "sans",
-    "theme": "night"
-  },
-  "pdf": {
-    "pageNumbers": true, 
-    "fontFamily": "Arial",
-    "fontSize": 12,
-    "paperSize": "a4",
-    "margin": {
-      "right": 62,
-      "left": 62,
-      "top": 56,
-      "bottom": 56
-    }
-  }
-}
-```
-
-| Variable | Description |
-| :--- | :--- |
-| `pdf.pageNumbers` | 是否添加页码，默认是true |
-| `pdf.fontSize` | 字体大小，默认是12 |
-| `pdf.fontFamily` | 字体，默认字体是Arial |
-| `pdf.paperSize` | Paper size, options are `'a0', 'a1', 'a2', 'a3', 'a4', 'a5', 'a6', 'b0', 'b1', 'b2', 'b3', 'b4', 'b5', 'b6', 'legal', 'letter'` \(default is `a4`\) |
-| `pdf.margin.top` | Top margin \(default is `56`\) |
-| `pdf.margin.bottom` | Bottom margin \(default is `56`\) |
-| `pdf.margin.right` | Right margin \(default is `62`\) |
-| `pdf.margin.left` | Left margin \(default is `62`\) |
-
-### gitbook mobi {#gitbook-mobi}
-
-```bash
-C:\Users\AllenIverson\Desktop\gitcourse>gitbook mobi
-info: 7 plugins are installed
-info: 6 explicitly listed
-info: loading plugin "highlight"... OK
-info: loading plugin "search"... OK
-info: loading plugin "lunr"... OK
-info: loading plugin "sharing"... OK
-info: loading plugin "fontsettings"... OK
-info: loading plugin "theme-default"... OK
-info: found 32 pages
-info: found 34 asset files
-info: >> generation finished with success in 26.0s !
-info: >> 1 file(s) generated
-```
-
-### gitbook epub {#gitbook-epub}
-
-```bash
-C:\Users\AllenIverson\Desktop\gitcourse>gitbook epub
-info: 7 plugins are installed
-info: 6 explicitly listed
-info: loading plugin "highlight"... OK
-info: loading plugin "search"... OK
-info: loading plugin "lunr"... OK
-info: loading plugin "sharing"... OK
-info: loading plugin "fontsettings"... OK
-info: loading plugin "theme-default"... OK
-info: found 32 pages
-info: found 34 asset files
-info: >> generation finished with success in 18.5s !
-info: >> 1 file(s) generated
-```
-
-## 6. calibre {#6-calibre}
-
-[下载地址](http://calibre-ebook.com/download)
-
-[![calibre](http://upload-images.jianshu.io/upload_images/3981391-dc1685249c334339.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)](http://upload-images.jianshu.io/upload_images/3981391-dc1685249c334339.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
-
-### ebook-convert {#ebook-convert}
-
-```text
-C:\Users\AllenIverson\Desktop\gitcourse>ebook-convert
-用法: ebook-convert.exe input_file output_file [options]
-转换不同格式的电子书。
-input_file 表示输入文件，output_file 表示输出文件。这两者作为命令行参数必须指定到最前面。
-输出的电子书格式可由 output_file 的扩展名得到。同时 output_file 也可以是一种以 .EXT 为扩展名的特殊格式。在这种情况下，输出文件的名称则使用输入文件的名称。注意：文件名不能以连字号作为开头。如果 output_
-file 不含扩展名，那么它将被视为一个目录并将会在该目录下生成 HTML 格式的“开放式电子书(OEB)”。这些文件会被视为正常文件而被输出插件所识别。
-在指定输入和输出文件后，您可以自定义特定的转换选项。根据输入和输出文件的类型不同可用的转换选项也不同。如需获取针对输入和输出文件的帮助，请在命令行中输入 -h。
-对于转换系统的完整文档请查阅
-https://manual.calibre-ebook.com/conversion.html
-给 ebook-convert.exe 传有空格的参数时，请将参数包括在引号中。例如 "C:\some path with spaces"
-选项:
-  --version       显示程序版本号并退出
-  -h, --help      显示此帮助信息并退出
-  --list-recipes  列出内建的订阅清单名。您可以通过如下命令创建基于内建订阅清单的电子书： ebook-convert "Recipe
-                  Name.recipe" output.epub
-```
-
-### ebook-convert –version {#ebook-convert-–version}
-
-```text
-C:\Users\AllenIverson\Desktop\gitcourse>ebook-convert --version
-ebook-convert.exe (calibre 2.81.0)
-Created by: Kovid Goyal <kovid@kovidgoyal.net>
-```
-
-### 使用 {#使用}
-
-[![calibre](http://upload-images.jianshu.io/upload_images/3981391-200aa47662a10f16.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)](http://upload-images.jianshu.io/upload_images/3981391-200aa47662a10f16.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
-
-[![calibre](http://upload-images.jianshu.io/upload_images/3981391-d55f8ff166ebfabe.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)](http://upload-images.jianshu.io/upload_images/3981391-d55f8ff166ebfabe.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
-
-[![calibre](http://upload-images.jianshu.io/upload_images/3981391-68ef58754fe4feea.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)](http://upload-images.jianshu.io/upload_images/3981391-68ef58754fe4feea.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
-
-## 7. GitBook 编译，生成pdf报错 {#7-GitBook-编译，生成pdf报错}
-
-最近在使用 GitBook 生成静态网页和pdf文件时，百度，谷歌了很久也没有类似的解决方案，最近发现是版本问题，我把我的相关经验分享给大家！
-
-在执行 gitbook build ，gitbook serve，gitbook pdf等命令均保持。报错了错误提示内容如下：
-
-```bash
-info: 10 plugins are installed
-info: 9 explicitly listed
-info: loading plugin "baidu"... OK
-info: loading plugin "donate"... OK
-info: loading plugin "sitemap"... OK
-info: loading plugin "highlight"... OK
-info: loading plugin "search"... OK
-info: loading plugin "lunr"... OK
-info: loading plugin "sharing"... OK
-info: loading plugin "fontsettings"... OK
-info: loading plugin "theme-default"... OK
-info: found 24 pages
-info: found 2 asset files
-warn: "options" property is deprecated, use config.get(key) instead
-warn: "options.generator" property is deprecated, use "output.name" instead
-error: error while generating page "README.md":
-TypeError: this.contentPath is not a function
-```
-
-当然也有些网友的报错内容如下：
-
-```bash
-warn: "options" property is deprecated, use config.get(key) instead
-warn: "page.progress" property is deprecated
-warn: "sections" property is deprecated, use page.content instead
-TypeError: Path must be a string. Received undefined
-```
-
-这种问题的原因是，gitbook的版本太低。大家执行 gitbook update 命令进行升级，升级到3.2.2版本即可。
-
-也有网友反映，报一下的错：
-
-```bash
-Error: Couldn't locate plugins "baidu, donate", Run 'gitbook install' to install plugins from registry.
-```
-
-这是提示插件没有安装的错误。大家执行 gitbook install 命令完成安装即可。
-
-[![gitbook install](http://upload-images.jianshu.io/upload_images/3981391-0e12415cc8846989.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)](http://upload-images.jianshu.io/upload_images/3981391-0e12415cc8846989.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
-
-## 8. [gitbook-convert](https://github.com/GitbookIO/gitbook-convert) {#8-gitbook-convert}
-
-把docx、xml、html、odt文档转成GitBook
-
-### 安装 {#安装}
-
-```bash
-$ npm install gitbook-convert -g
-```
-
-### 常用命令 {#常用命令}
-
-[![gitbook-convert](http://upload-images.jianshu.io/upload_images/3981391-24614430f8fc2ac1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)](http://upload-images.jianshu.io/upload_images/3981391-24614430f8fc2ac1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
-
-### 使用 {#使用-1}
-
-```bash
-$ gitbook-convert [options] <file> [export-directory]
-```
-
-[![gitbook-convert](http://upload-images.jianshu.io/upload_images/3981391-4a49aed0f136dbe3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)](http://upload-images.jianshu.io/upload_images/3981391-4a49aed0f136dbe3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
-
-[![gitbook-convert](http://upload-images.jianshu.io/upload_images/3981391-8d69bf8557ebe4d3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)](http://upload-images.jianshu.io/upload_images/3981391-8d69bf8557ebe4d3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
-
-## 9. 常用插件 {#9-常用插件}
-
-Gitbook 本身功能丰富，但同时可以使用插件来进行个性化定制。[Gitbook 插件](http://localhost:4000/start/plugin.html) 里已经有100多个插件，可以在 `book.json` 文件的 `plugins` 和 `pluginsConfig` 字段添加插件及相关配置，添加后别忘了进行安装。
-
-```javascript
-// book.json
-{
-  "title": "Webpack 中文指南",
-  "description": "Webpack 是当下最热门的前端资源模块化管理和打包工具，本书大部分内容翻译自 Webpack 官网。",
-  "language": "zh",
-  "plugins": [
-    "disqus",
-    "github",
-    "editlink",
-    "prism",
-    "-highlight",
-    "baidu",
-    "splitter",
-    "sitemap"
-  ],
-  "pluginsConfig": {
-    "disqus": {
-      "shortName": "webpack-handbook"
-    },
-    "github": {
-      "url": "https://github.com/zhaoda/webpack-handbook"
-    },
-    "editlink": {
-      "base": "https://github.com/zhaoda/webpack-handbook/blob/master/content",
-      "label": "编辑本页"
-    },
-    "baidu": {
-        "token": "a9787f0ab45d5e237bab522431d0a7ec"
-    },
-    "sitemap": {
-        "hostname": "http://zhaoda.net/"
-    }
-  }
-}
-```
-
-```text
-# 安装插件
-$ gitbook install ./
-```
-
-### [editlink](https://plugins.gitbook.com/plugin/editlink) {#editlink}
-
-内容顶部显示 `编辑本页` 链接。
-
-### [ad](https://plugins.gitbook.com/plugin/ad) {#ad}
-
-在每个页面顶部和底部添加广告或任何自定义内容。
-
-### [splitter](https://plugins.gitbook.com/plugin/splitter) {#splitter}
-
-在左侧目录和右侧内容之间添加一个可以拖拽的栏，用来调整两边的宽度。
-
-### [image-captions](https://plugins.gitbook.com/plugin/image-captions) {#image-captions}
-
-抓取内容中图片的 `alt` 或 `title` 属性，在图片下面显示标题。
-
-### [github](https://plugins.gitbook.com/plugin/github) {#github}
-
-在右上角显示 github 仓库的图标链接。
-
-### [anchors](https://plugins.gitbook.com/plugin/anchors) {#anchors}
-
-标题带有 github 样式的锚点。
-
-### [chart](https://plugins.gitbook.com/plugin/chart) {#chart}
-
-使用 C3.js 图表。
-
-### [styles-sass](https://plugins.gitbook.com/plugin/styles-sass) {#styles-sass}
-
-使用 SASS 替换 CSS。
-
-### [styles-less](https://plugins.gitbook.com/plugin/styles-less) {#styles-less}
-
-使用 LESS 替换 CSS。
-
-### [ga](https://plugins.gitbook.com/plugin/ga) {#ga}
-
-添加 Google 统计代码。
-
-### [disqus](https://plugins.gitbook.com/plugin/disqus) {#disqus}
-
-添加 disqus 评论插件。
-
-### [sitemap](https://plugins.gitbook.com/plugin/sitemap) {#sitemap}
-
-生成站点地图。
-
-### [latex-codecogs](https://plugins.gitbook.com/plugin/latex-codecogs) {#latex-codecogs}
-
-使用数学方程式。
-
-### [mermaid](https://plugins.gitbook.com/plugin/mermaid) {#mermaid}
-
-使用流程图。
-
-### [book-summary-scroll-position-saver](https://plugins.gitbook.com/plugin/book-summary-scroll-position-saver) {#book-summary-scroll-position-saver}
-
-自动保存左侧目录区域导航条的位置。
-
-### [sharing](https://plugins.gitbook.com/plugin/sharing) {#sharing}
-
-默认的分享插件。
-
-### [fontsettings](https://plugins.gitbook.com/plugin/fontsettings) {#fontsettings}
-
-默认的字体、字号、颜色设置插件。
-
-### [search](https://plugins.gitbook.com/plugin/search) {#search}
-
-默认搜索插件。
-
-### [tbfed-pagefooter](https://plugins.gitbook.com/plugin/tbfed-pagefooter) {#tbfed-pagefooter}
-
-自定义页脚，显示版权和最后修订时间。
-
-### [prism](https://plugins.gitbook.com/plugin/prism) {#prism}
-
-基于 [Prism](http://prismjs.com/) 的代码高亮。
-
-### [atoc](https://plugins.gitbook.com/plugin/atoc) {#atoc}
-
-插入 TOC 目录。
-
-### [ace](https://plugins.gitbook.com/plugin/ace) {#ace}
-
-插入代码高亮编辑器。
-
-### [highlight](https://plugins.gitbook.com/plugin/highlight) {#highlight}
-
-默认的代码高亮插件，通常会使用 prism 来替换。
-
-### [github-buttons](https://plugins.gitbook.com/plugin/github-buttons) {#github-buttons}
-
-显示 github 仓库的 star 和 fork 按钮。
-
-### [sectionx](https://plugins.gitbook.com/plugin/sectionx) {#sectionx}
-
-分离各个段落，并提供一个展开收起的按钮。
-
-### [mcqx](https://plugins.gitbook.com/plugin/mcqx) {#mcqx}
-
-使用选择题。
-
-### [include-codeblock](https://plugins.gitbook.com/plugin/include-codeblock) {#include-codeblock}
-
-通过引用文件插入代码。
-
-### [fbqx](https://plugins.gitbook.com/plugin/fbqx) {#fbqx}
-
-使用填空题。
-
-### [spoiler](https://plugins.gitbook.com/plugin/spoiler) {#spoiler}
-
-隐藏答案，当鼠标划过时才显示。
-
-### [anchor-navigation](https://plugins.gitbook.com/plugin/anchor-navigation) {#anchor-navigation}
-
-锚点导航。
-
-### [youtubex](https://plugins.gitbook.com/plugin/youtubex) {#youtubex}
-
-插入 YouTube 视频。
-
-### [redirect](https://plugins.gitbook.com/plugin/redirect) {#redirect}
-
-页面跳转。
-
-### [expandable-chapters](https://plugins.gitbook.com/plugin/expandable-chapters) {#expandable-chapters}
-
-收起或展开章节目录中的父节点。
-
-### [baidu](https://plugins.gitbook.com/plugin/baidu) {#baidu}
-
-使用百度统计。
-
-### [duoshuo](https://plugins.gitbook.com/plugin/duoshuo) {#duoshuo}
-
-使用多说评论。
-
-### [jsfiddle](https://plugins.gitbook.com/plugin/jsfiddle) {#jsfiddle}
-
-插入 JSFiddle 组件。
-
-### [jsbin](https://plugins.gitbook.com/plugin/jsbin) {#jsbin}
-
-插入 JSBin 组件。
-
-### 开发插件 {#开发插件}
-
-最好先查看别人的插件是怎么做的，然后再看[官方文档](https://developer.gitbook.com/plugins/index.html)。
-
-## 10. 配置 {#10-配置}
-
-在book.json中配置，键值对的形式
-
-* title 设置书本的标题
-
-```bash
-"title" : "Gitbook Use"
-```
-
-* author 作者的相关信息
-
-```bash
-"author" : "zhangjikai"
-```
-
-* description 书本的简单描述
-
-```bash
-"description" : "记录Gitbook的配置和一些插件的使用"
-```
-
-* language Gitbook使用的语言, 版本2.6.4中可选的语言如下
-
-```bash
-en, ar, bn, cs, de, en, es, fa, fi, fr, he, it, ja, ko, no, pl, pt, ro, ru, sv, uk, vi, zh-hans, zh-tw
-```
-
-配置使用简体中文
-
-```bash
-"language" : "zh-hans"
-```
-
-* links 在左侧导航栏添加链接信息
-
-```bash
-"links" : {
-    "sidebar" : {
-        "Home" : "http://zhangjikai.com"
-    }
-}
-```
-
-* styles 自定义页面样式， 默认情况下各generator对应的css文件
-
-```javascript
-"styles": {
-    "website": "styles/website.css",
-    "ebook": "styles/ebook.css",
-    "pdf": "styles/pdf.css",
-    "mobi": "styles/mobi.css",
-    "epub": "styles/epub.css"
-}
-```
-
-例如使`<h1> <h2>`标签有下边框， 可以在`website.css`中设置
-
-```css
-h1 , h2{
-    border-bottom: 1px solid #EFEAEA;
-}
-```
-
-* plugins 配置使用的插件
-
-```bash
-"plugins": [
-    "disqus"
-]
-```
-
-添加新插件之后需要运行`gitbook install`来安装新的插件
-
-Gitbook默认带有5个插件：
-
-* highlight
-* search
-* sharing
-* font-settings
-* livereload
-
-如果要去除自带的插件， 可以在插件名称前面加`-`
-
-```bash
-"plugins": [
-    "-search"
-]
-```
-
-## 11. 更多GitBook教程 {#11-更多GitBook教程}
-
-* [GitBook 中文解說 - 2.4](https://www.gitbook.com/book/wastemobile/gitbook-chinese/details)
-* [gitbook-documentation](https://www.gitbook.com/book/zhanghqgit/gitbook-documentation/details)
-* [gitbook-documentation](https://www.gitbook.com/book/chestnutme/gitbook-documentation/details)
-
-## 注意：
-
-1.第一次使用的时候要注意安装node、npm版本，否则的话，gitbook-cli安装不成功；
-
-2.安装gitbook-cli就不要安装gitbook，根据报错来处理错误；
 
